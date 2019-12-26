@@ -22,8 +22,13 @@ Page({
   _loadData: function (){
 
     var id = 1;
-    var data = home.getBannerData(id);
+    var data = home.getBannerData(id,this.callBack);
 
+  },
+
+  // 回调函数
+  callBack:function (res) {
+    console.log(res);
   }
 
 })
