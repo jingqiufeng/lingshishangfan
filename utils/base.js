@@ -26,7 +26,7 @@ class Base{
             },
             success:function (res) {
 
-                params.successCallback&&params.successCallback(res);
+                params.successCallback && params.successCallback(res.data);
 
             },
             fail:function (err) {

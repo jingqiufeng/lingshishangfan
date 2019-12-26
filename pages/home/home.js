@@ -22,13 +22,11 @@ Page({
   _loadData: function (){
 
     var id = 1;
-    var data = home.getBannerData(id,this.callBack);
+    var data = home.getBannerData(id,(res)=>{
+      console.log(res);
+    });
 
   },
 
-  // 回调函数
-  callBack:function (res) {
-    console.log(res);
-  }
 
 })
