@@ -51,6 +51,14 @@ Page({
     wx.navigateTo({
       url: '../product/product?id=' + id,
     });
+  },
+
+  onThemesItemTap:function(){
+    var id = home.getDataSet(event,id);
+    var name = home.getDataSet(event,name);
+    wx.navigateTo({
+      url: '../theme/theme?id=' + id + '&name=' + name
+    });
   }
 
 

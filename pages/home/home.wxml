@@ -16,10 +16,10 @@
         <view class="home-main-header">精选主题</view>
         <view class="theme-box">
           <block wx:for="{{themeArr}}">
-            <view wx:if="{{index == 2}}" data-id="{{item.id}}" class="theme-item big">
+            <view wx:if="{{index == 2}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onThemesItemTap" class="theme-item big">
               <image src="{{item.topic_img.url}}"></image>
             </view>
-            <view wx:else class="theme-item" data-id="{{item.id}}">
+            <view wx:else class="theme-item" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onThemesItemTap">
               <image src="{{item.topic_img.url}}"></image>
             </view>
           </block>
