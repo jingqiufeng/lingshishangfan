@@ -18,15 +18,40 @@ Page({
     this._loadData();
   },
 
-  // 定义私有函数：加载banner数据
+  // 定义私有函数：加载首页数据
   _loadData: function (){
 
+    //首页加载banner数据
     var id = 1;
-    var data = home.getBannerData(id,(res)=>{
-      console.log(res);
+    home.getBannerData(id,(res)=>{
+      this.setData({
+        'bannerArr':res
+      });
+    });
+
+    //首页加载主题数据
+    home.getThemeData((res)=>{
+      this.setData({
+        'themeArr': res
+      });
+    });
+
+    //首页加载最新产品数据
+    home.getProductsData((res) => {
+      this.setData({
+        productsArr: res
+      });
+      
     });
 
   },
+
+  onProductsItemTap:function(event){
+    var id = home.getDataSet(event,id);
+    wx.navigateTo({
+      url: '../product/product?id=' + id,
+    });
+  }
 
 
 })

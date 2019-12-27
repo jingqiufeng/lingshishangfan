@@ -1,11 +1,13 @@
 {
   "pages": [
-    "pages/home/home"
+    "pages/home/home",
+    "pages/product/product",
+    "pages/theme/thmem"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "可尚商城",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
