@@ -1,9 +1,12 @@
 /* pages/theme/theme.wxss */
 @import "../tpls/base.wxss";
 @import "../tpls/products/products-tpl.wxss";
+.theme-container{
 
+}
 .theme-header{
   height: 400rpx;
+  width: 100%;
   margin-bottom: 30rpx;
   position: relative;
 }

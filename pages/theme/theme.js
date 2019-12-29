@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   /**
@@ -17,13 +17,13 @@ Page({
   onLoad: function (options) {
     this.data.id = options.id;
     this.data.name = options.name;
-    console.log(options);
-    //this._loadData();
+    
+    this._loadData();
   },
 
   _loadData:function(){
+    var that = this;
     theme.getProductsData(this.data.id,(data)=>{
-      console.log(data);
       this.setData({
         themeInfo:data
       });

@@ -9,7 +9,7 @@
 
   <view class="theme-main">
     <!--- is后面跟的是模版名字，data用来给模版传递数据 --->
-    <template is="products" data="{{themeInfo}}"></template>
+    <template is="products" data="{{productsArr:themeInfo.products}}"></template>
   </view>
 
 </view>
