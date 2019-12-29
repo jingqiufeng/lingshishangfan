@@ -53,7 +53,7 @@ Page({
     });
   },
 
-  onThemesItemTap:function(){
+  onThemesItemTap: function (event){
     var id = home.getDataSet(event,id);
     var name = home.getDataSet(event,name);
     wx.navigateTo({

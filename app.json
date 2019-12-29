@@ -34,10 +34,10 @@
         "selectedIconPath": "imgs/toolbar/my@selected.png"
       }
     ],
-    "borderStyle":"white",
-    "selectedColor":"#AB956D",
-    "color":"#989898",
-    "backgroundColor":"F5F5F5"
+    "borderStyle": "white",
+    "selectedColor": "#AB956D",
+    "color": "#989898",
+    "backgroundColor": "F5F5F5"
   },
   "window": {
     "navigationBarTitleText": "可尚商城",
@@ -46,5 +46,6 @@
     "backgroundColor": "#FFFFFF",
     "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true
-  }
+  },
+  "sitemapLocation": "sitemap51.json"
 }

@@ -1,2 +1,15 @@
 <!--pages/theme/theme.wxml-->
-<text>pages/theme/theme.wxml</text>
+<import src="../tpls/products/products-tpl.wxml"/>
+
+<view class="container">
+
+  <view class="theme-header">
+    <image src="{{themeInfo.head_img.url}}" mode="aspectFill"></image>
+  </view>
+
+  <view class="theme-main">
+    <!--- is后面跟的是模版名字，data用来给模版传递数据 --->
+    <template is="products" data="{{themeInfo}}"></template>
+  </view>
+
+</view>
