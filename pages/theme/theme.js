@@ -21,8 +21,13 @@ Page({
     this._loadData();
   },
 
+  onReady:function(){
+    wx.setNavigationBarTitle({
+      title:this.data.name
+    });
+  },
+
   _loadData:function(){
-    var that = this;
     theme.getProductsData(this.data.id,(data)=>{
       this.setData({
         themeInfo:data

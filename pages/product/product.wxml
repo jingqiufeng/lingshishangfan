@@ -1,2 +1,33 @@
 <!--pages/product/product.wxml-->
-<text>pages/product/product.wxml</text>
+<view class="container detail-container">
+
+  <!--- 产品详情页上半部分开始 --->
+  <view class="detail-header-box">
+
+    <view class="fixed-btns-box">
+      <view class="fiexd-cart">
+        <image src="../../imgs/icon/cart@top.png"></image>
+      </view>
+    </view>
+
+    <view class="detail-topic-img">
+      <image src="{{product.main_img_url}}" mode="aspectFit"></image>
+    </view>
+
+    <view class="cart-box">
+      <view class="product-counts"></view>
+      <view class="middle-border"></view>
+      <view class="add-cart-btn"></view>
+    </view>
+
+    <view class="basic-info-box">
+    </view>
+
+  </view>
+  <!--- 产品详情页上半部分结束 --->
+
+  <!--- 产品详情页下半部分开始 --->
+  <view class="detail-bottom-box"></view>
+  <!--- 产品详情页下半部分结束 --->
+
+</view>
