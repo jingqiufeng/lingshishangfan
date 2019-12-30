@@ -15,19 +15,46 @@
     </view>
 
     <view class="cart-box">
-      <view class="product-counts"></view>
+      <view class="product-counts">
+        <picker range="{{countsArray}}" bindchange="bindPickerChange" class="{{product.stock == 0 ?'disabled':''}}">
+          <view>
+            <text class="counts-tips">数量</text>
+            <text class="counts-data">{{productCount}}</text>
+            <image class="counts-icon" src="../../imgs/icon/arrow@down.png"></image>
+          </view>
+        </picker>
+      </view>
       <view class="middle-border"></view>
-      <view class="add-cart-btn"></view>
+      <view class="add-cart-btn {{product.stock == 0 ?'disabled':''}}">
+        <text>加入购物车</text>
+        <image class="cart-icon" src="../../imgs/icon/cart.png"></image>
+      </view>
     </view>
 
     <view class="basic-info-box">
+      <view class="stock" wx:if="{{product.stock>0}}">有货</view>
+      <view class="stock no" wx:else>缺货</view>
+      <view class="name">{{product.name}}</view>
+      <view class="price">¥{{product.price}}</view>
     </view>
 
   </view>
   <!--- 产品详情页上半部分结束 --->
 
   <!--- 产品详情页下半部分开始 --->
-  <view class="detail-bottom-box"></view>
+  <view class="detail-bottom-box">
+    <view class="tabs-box">
+      <block wx:for="{{['商品详情','产品参数','售后保障']}}">
+        <view class="tabs-item {{currentTabsIndex==index?'selected':''}}" bindtap="onTabsItemTap" data-index="{{index}}">{{item}}</view>
+      </block>
+    </view>
+
+    <view class="product-detail-box">
+      <view hidden="{{currentTabsIndex!=0}}">0</view>
+      <view hidden="{{currentTabsIndex!=1}}">1</view>
+      <view hidden="{{currentTabsIndex!=2}}">2</view>
+    </view>
+  </view>
   <!--- 产品详情页下半部分结束 --->
 
 </view>
