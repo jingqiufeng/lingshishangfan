@@ -7,6 +7,7 @@
     <view class="fixed-btns-box">
       <view class="fiexd-cart">
         <image src="../../imgs/icon/cart@top.png"></image>
+        <view wx:if="{{cartTotalCounts>0}}">{{cartTotalCounts}}</view>
       </view>
     </view>
 
@@ -25,7 +26,7 @@
         </picker>
       </view>
       <view class="middle-border"></view>
-      <view class="add-cart-btn {{product.stock == 0 ?'disabled':''}}">
+      <view class="add-cart-btn {{product.stock == 0 ?'disabled':''}}" bindtap="onAddingToCartTap">
         <text>加入购物车</text>
         <image class="cart-icon" src="../../imgs/icon/cart.png"></image>
       </view>

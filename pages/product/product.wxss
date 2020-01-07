@@ -191,6 +191,9 @@
 .product-detail-box{
   padding-bottom: 20rpx;
 }
+.product-detail-box image{
+  display: block;
+}
 .product-detail-imgs image{
   width: 100%;
   height:400rpx;
