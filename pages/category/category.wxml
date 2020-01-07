@@ -1,2 +1,24 @@
 <!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<import src="../tpls/category/category-tpl.wxml" />
+
+<view class="container category-container">
+
+  <view class="category-box">
+
+    <view class="left-box">
+      <block wx:for="{{categoryTypeArr}}">
+        <view bindtap="changeCategory" class="menu-item {{currentMenuIndex == index?'selected':''}}" data-id="{{item.id}}" data-index="{{index}}">
+        {{item.name}}
+        </view>
+      </block>
+    </view>
+
+    <view class="right-box">
+      <view class="foots-type-box">
+        <template is="categorydetail" data="{{categoryInfo:categoryProducts}}"></template>
+      </view>
+    </view>
+
+  </view>
+
+</view>
