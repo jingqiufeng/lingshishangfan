@@ -27,7 +27,7 @@ class Cart extends Base
     var isHasInfo = this._isHasThatOne(item.id,cartData);
 
     //如果在购物车中没有找到这个商品，说明是新商品，那么需要把这个产品添加到缓存中去
-    if(isHasInfo == -1){
+    if(isHasInfo.index == -1){
       item.counts = counts;
       item.selectStatus =true; //添加的这个属性，是用来判断当前这个产品是否在购物车里是否被选中
       cartData.push(item);
@@ -52,8 +52,7 @@ class Cart extends Base
   //定义一个方法，用来判断传过来的信息是否已经存在购物车信息内
   //参数说明：id为商品的id，arr就是（var cartData = this.getCartDataFromLocal();）也就是缓存中的数据
   _isHasThatOne(id,arr){
-    var item;
-    var result = {index:-1};
+    var item,result = {index:-1};
 
     for(let i = 0;i<arr.length; i++){
       item = arr[i];
@@ -73,9 +72,9 @@ class Cart extends Base
   // 计算购物车内商品总数量
   getCartTotalCounts(){
     var data = this.getCartDataFromLocal();
-    console.log(data);
+
     var counts = 0;
-    for(let i=0; i< data[i].counts; i++){
+    for (let i = 0; i < data.length; i++){
       counts += data[i].counts;
     }
     return counts;

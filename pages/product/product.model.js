@@ -11,6 +11,7 @@ class Product extends Base
     var param = {
       url:'product/' + id,
       successCallback:function(res){
+        console.log(callback);
         callback && callback(res);
       }
     };

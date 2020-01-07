@@ -17,7 +17,8 @@ Page({
       id:null,
       countsArray:[1,2,3,4,5,6,7,8,9,10],
       productCount:1,
-      currentTabsIndex:0
+      currentTabsIndex:0,
+      product:{}
   },
 
   /**
@@ -34,7 +35,9 @@ Page({
         cartTotalCounts: cart.getCartTotalCounts(),
         product:data
       });
+
     });
+    
   },
 
   bindPickerChange:function(event){
@@ -54,12 +57,17 @@ Page({
 
   onAddingToCartTap:function(event){
     this.addToCart();
+    var counts = this.data.cartTotalCount + this.data.productCount;
+    this.setData({
+      cartTotalCounts: cart.getCartTotalCounts()
+    });
   },
 
   addToCart:function(){
     var tempObj = {};
     var keys = ['id','name','main_img_url','price'];
 
+  
     for(var key in this.data.product){
       if(keys.indexOf(key) >= 0){
         tempObj[key] = this.data.product[key];
