@@ -20,8 +20,8 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onHide: function () {
+      wx.setStorageSync('cart', this.data.cartData);
   },
 
   /**
@@ -119,6 +119,31 @@ Page({
       account: newData.account,
       cartData: this.data.cartData
     });
+  },
+
+  changeCounts:function(event){
+    var id = cart.getDataSet(event, 'id');
+    var type = cart.getDataSet(event, 'type');
+    var index = this._getProductIndexById(id);
+    var counts = 1;
+
+    if(type == 'add'){
+      cart.addCounts(id);
+    }else{
+      counts = -1;
+      cart.cutCounts(id);
+    }
+
+    this.data.cartData[index].counts += counts;
+    this._resetCartData();
+  },
+
+  delete:function(event){
+    var id = cart.getDataSet(event, 'id');
+    var index = this._getProductIndexById(id);
+    this.data.cartData.splice(index,1);
+    this._resetCartData();
+    cart.delete(id);
   }
   
 })

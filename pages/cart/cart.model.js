@@ -86,6 +86,55 @@ class Cart extends Base
       
     }
     return counts;
+  };
+
+
+  //修改购物车商品数量的方法
+  //params
+  //id - {int} 商品id
+  //counts - {int} 数目
+  _changeCounts(id,counts){
+    var cartData = this.getCartDataFromLocal();
+    var hasInfo = this._isHasThatOne(id,cartData); //判断传入的id这个商品是否已存在
+
+    if(hasInfo.index != -1){
+      if(hasInfo.data.counts > 1){
+        cartData[hasInfo.index].counts += counts;
+      }
+    }
+
+    wx.setStorageSync(this._storageKeyName, cartData); //更新本地缓存
+
+  };
+
+  //增加商品数目
+  addCounts(id){
+    this._changeCounts(id,1);
+  };
+
+  cutCounts(id){
+    this._changeCounts(id, -1);
+  }
+
+  //支持删除多个
+  delete(ids){
+    //判断传过来的是不是数组
+    if(!(ids instanceof Array)){
+      ids = [ids];
+    }
+
+    //从本地存储中取出购物车数据
+    var cartData = this.getCartDataFromLocal();
+    //遍历，然后删掉
+    for(let i = 0; i<ids.length; i++){
+      var hasInfo = this._isHasThatOne(ids[i],cartData);
+      if(hasInfo.index != -1){
+        cartData.splice(hasInfo.index,1); //删除某一组数据
+      }
+    }
+
+    wx.setStorageSync(this._storageKeyName, cartData); //更新本地缓存
+
   }
 
 
