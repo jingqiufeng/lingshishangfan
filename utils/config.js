@@ -2,6 +2,10 @@ class Config {
 
     constructor(){}
 
+    test(){
+      return 1;
+    }
+
 }
 
 //模拟定义静态变量

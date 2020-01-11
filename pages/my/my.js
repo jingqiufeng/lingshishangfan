@@ -1,66 +1,70 @@
-// pages/my/my.js
+import { My } from './my.model.js';
+import { Order } from '../order/order.model.js';
+import { Address } from '../../utils/address.js';
+var my = new My();
+var order = new Order();
+var address = new Address();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    pageIndex: 1,
+    orderArr: [],
+    isLoadAll: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._loadData();
+    this._getAddressInfo();
+    this._getOrders();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  _loadData: function () {
+    my.getUserInfo((data)=>{
 
+      this.setData({
+        userInfo:data
+      });
+
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  _getAddressInfo: function(){
+    address.getAddress((addressInfo)=>{
+      this.setData({
+        addressInfo: addressInfo
+      });
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  _getOrders: function (){
+    order.getOrders(this.data.pageIndex,(res)=>{
+      var data = res.data.data;
 
+      if(data.length > 0){
+        this.data.orderArr.push.apply(this.data.orderArr,data);
+        this.setData({
+          orderArr: this.data.orderArr
+        });
+      }else{
+        this.data.isLoadAll = true;
+      }
+      
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+  //小程序提供了一个下拉到底部的方法
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    if(!this.data.isLoadAll){
+      this.data.pageIndex++;
+      this._getOrders();
+    }
   }
+
 })
