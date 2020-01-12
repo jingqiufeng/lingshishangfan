@@ -100,6 +100,12 @@ class Order extends Base{
     wx.setStorageSync(this._storageKeyName, data);
   }
 
+  //判断是否有新订单
+  hasNewOrder() {
+    var flag = wx.getStorageSync(this._storageKeyName);
+    return flag == true;
+  }
+
 }
 
 export {Order}
